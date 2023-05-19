@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+    <h2>/aaa/bbb</h2>
+    <p>first 를 First로 잘 못 쓴다면???</p>
+    <img src="templateLiteral.png"><br>
+    <p> 에러 없이 그냥 된다</p>
+    <br>
+    <p> 잘썼다면?</p>
+    <img src="tl.png"><br>
+[[${first}]] - [[${second}]] = [[${first} - ${second}]]<br>
+    <p> 잘 나온다</p>
+
+
+    <p>http://localhost:8081/aaa/bbb 에서 img src url을 만들었다면, face02.png는 어디서 찾을까?<br>   >> http://localhost:8081/aaa => templates/aaa/face02.png</p>
+    <img src="face02.png" alt="틀렷어" srcset="">
+    <p>그렇다면 그냥 http://localhost:8081/ 경로에 있는 것을 쓰고 싶다면?<br> >> src="../face01.png"  <img src="../face01.png" alt="틀렷어" srcset=""> </p>
+
+</body>
+</html>
