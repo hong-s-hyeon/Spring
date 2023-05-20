@@ -78,6 +78,8 @@
 	<div th:utext="'What\'s up?'"></div>  <!-- literal + back slash -->
 
     <hr>
+    <br>
+    <br>
     <h2>배열, List, Map</h2>
     <div th:text="${arr1}">내용</div>
     <div th:text="${arr2}">내용</div>
@@ -97,7 +99,7 @@
     <div th:text="${arr2[1]}"></div>
     <div th:text="${arr2[0].name}"></div>
     <div th:text="${arr2[1].regdate}"></div>
-
+    <br>
     <br>
     <h2>ArrayList의 경우는?</h2>
     <div th:text="'list1[0] >>  ' + ${list1[0]}"></div>
@@ -107,13 +109,23 @@
     <div th:text="'list2[3] >>  ' + ${list2[3]}"></div>
     <div th:text="'list2[3].name >>  ' + ${list2[3].name}"></div>
     <div th:text="'list2[3].regdate >>  ' + ${list2[3].regdate}"></div>
-
+    <br>
     <br>
     <h2>Map의 경우는?</h2>
     <div th:text="${map1}"></div>
-    <div th:text="${map1[0]}"></div>
+    <div th:text="${map1[0]}"></div> <!-- key: 0 의 값 -->
+    <div th:text="${map1[5]}"></div> <!-- 없는 key 값은? 에러 아니다! -->
+
+
+	<hr>
     <div th:text="${map2}"></div>
-    <div th:text="${map2[0]}"></div>
+    <div th:text="'map2[AAA]  >>  ' + ${map2[AAA]}"></div>  <!-- key: AAA 의 값 -->
+    <div th:text="'map2.AAA  >>  ' + ${map2.AAA}"></div>  <!-- key: AAA 의 값 -->
+    <div th:text="${map2[xxx]}"></div>  <!-- key: xxx  이런건 없어서 안찍히는 것. 그런데 에러는 아님 -->
+<!--    <div th:text="${map2.xxx}"></div>  --> <!-- map2에 xxx가 없는 와중에 getXxx를 찾았는데 없어서 에러 -->
+
+    <div th:text="${map2.BBB.name}"></div><!-- map2.get("BBB").getName() -->
+
 
 
 

@@ -4,6 +4,7 @@ import com.lec.spring.domain.Member;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -82,9 +83,16 @@ public class SampleController {
 
     }
 
+    @RequestMapping("/sample3")
+    public void sample3(Model model) {
+        model.addAttribute("list", list2);
+    }
 
-
-
+    @RequestMapping(value = "/sample4", method = RequestMethod.GET)   // GET 방식으로 /sample4 에 대해 동작하는 handler
+    public void sample4(Model model) {
+        list2.get(3).setId(null);
+        model.addAttribute("list", list2);
+    }
 
 
 }
