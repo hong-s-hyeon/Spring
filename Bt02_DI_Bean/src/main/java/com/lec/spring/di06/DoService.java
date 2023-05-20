@@ -13,7 +13,7 @@ class RegisterService implements DoService{
     // 기본생성자는 없다.
 
 
-    // 아래 DAO 는 자동주입 받게 된다
+    // 아래 DAO 는 자동주입 받게 된다. 어떻게? Bean 객체의 이름(메소드이름) 과 파라미터의 이름이 같아서
     public RegisterService(DAO dao) {
         System.out.printf("RegisterService(%s)생성\n", dao);
         this.dao = dao;

@@ -3,12 +3,20 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Title</title>
+<!--	/CSS/common.css 라고 하면, 절대경로이다. 웹루트에서부터 시작 >> localhost:8081/ 가 웹루트   -->
+<!--	href="/ReqMapping/CSS/common.css" 또는 href="CSS/common.css"로 쓰면 된다    -->
+	<link rel="stylesheet" href="/ReqMapping/CSS/common.css">
 </head>
+
 <body>
+<div>
 	<h1>requestMapping(routing) 또는 HandlerMapping : /common</h1>
 	<p>HttpServletRequest request 에 대해서 알아보기</p>
+</div>
 	<br>
+<div class="sts">
 	uri : <span>[[${uri}]]</span><br>
 	context path : <span>[[${conPath}]]</span>
+</div>
 </body>
 </html>

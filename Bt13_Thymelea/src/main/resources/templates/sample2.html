@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Sameple2</title>
+</head>
+<body>
+    <h4 th:text="m"></h4>
+
+    <!-- 객체, 변수 표현. member 객체의 toString() 값이 찍혔다. -->
+    <h4 th:text="${m}"></h4>
+
+
+    <div th:text="${'aaa'}"></div><!-- aaa -->
+    <div th:text="${aaa}">???</div><!-- model 객체에 없는 attribute. 에러는 아니다 -->
+    <div th:text="${'aaa' + 'bbb'}"></div><!-- aaabbb ${} 안에서 문자열 + 연산 가능 -->
+<!--    <div th:text="${aaa + bbb}"></div>--><!-- 에러발생 에러발생! thymeleaf의 에러는 보통 아래에 발생한다 왜? aaa와 bbb는 null -->
+    <div th:text="${'aaa' + 10 + 'bbb'}"></div><!-- aaabbb ${} 안에서 문자열 + 연산 가능 -->
+
+	<div th:text="${10 + 20}"></div>
+	<div th:text="${10 - 20}"></div>
+	<div th:text="${10 * 20}"></div>
+	<div th:text="${10 / 20}"></div>
+	<div th:text="${10.0 / 20}"></div>
+	<div th:text="${10.0 % 3}"></div>
+
+	<hr>
+
+	<div th:text="10 + 20"></div>
+	<div th:text="10 - 20"></div>
+	<div th:text="m + 20"></div>
+
+    <hr>
+
+	<div th:text="${m.name}"></div> <!-- m.getName() -->
+	<div th:text="${m.regdate}"></div> <!-- m.getRegDate() -->
+	<div th:text="${m.no}"></div> <!-- m.getNo() -->
+	<div th:text="${m.id}"></div> <!-- m.getId() -->
+<!--	<div th:text="${m.age}"></div> -->
+    <!-- Property or field 'age' cannot be found on object of type 'com.lec.spring.domain.Member' -->
+	<!-- Property 가 없다는 것이다. -->
+
+		<!--text attribute : 안의값을 해당 태그의 값으로 입력-->
+	<div th:text="${m.nick}"></div>   <!-- memeber에 없는ㅂ property 인데 어떻게 됬지?? -->
+                                        <!-- 여기서 .nick은 field를 찾는게 아니라, getter 메소드를 찾는다. -->
+                                        <!-- getter 메소드를 그냥 만들면 된다 -->
+    <div th:text="${m.Nick}"></div> <!-- 얘는 되네?ㅋㅋㅋ -->
+<!--    <div th:text="${m.nIck}"></div>-->
+<!-- Property or field 'nIck' cannot be found on object of type 'com.lec.spring.domain.Member'-->
+
+	<div th:text="${m.RegDateTime}"></div>
+	<div th:text="${m.regDateTime}"></div>
+	<hr>
+	<div th:text="aaa + bbb"></div>
+	<div th:text="'aaa' + 'bbb'"></div>
+	<div th:text="aaa + (10 + 20)"></div>
+
+    <!-- 변수 표현식 안에선 논리 연산자 사용 가능 -->
+	<div th:text="${true && false}"></div>
+	<div th:text="${true || false}"></div>
+	<div th:text="${!false}"></div>
+    <div th:text="${true and false}"></div>
+	<div th:text="${true or false}"></div>
+	<div th:text="${not false}"></div>
+
+<!--삼항 연산자-->
+	<div th:text="(10 > 4)? 'big' : 'small'"></div>
+
+	<hr>
+	<h3>th:text    th:utext</h3>
+	<div th:text="${'<h3>' + m.no + '</h3>'}"></div>
+	<div th:utext="${'<h3>' + m.no + '</h3>'}"></div>
+
+	<br>
+    <h3>escaping 하기</h3>
+    <!-- escaping 하기  What's up? 출력 -->
+	<div th:text="${'What''s up?'}"></div>  <!-- ${} 안에서 '' 이렇게 2번 쓰면 실제로는 ' 가 찍힌다 -->
+	<div th:utext="'What\'s up?'"></div>  <!-- literal + back slash -->
+
+    <hr>
+    <h2>배열, List, Map</h2>
+    <div th:text="${arr1}">내용</div>
+    <div th:text="${arr2}">내용</div>
+    <div th:text="${list1}">내용</div>
+    <div th:text="${list2}">내용</div>
+    <div th:text="${map1}">내용</div>
+    <div th:text="${map2}">내용</div>
+
+    <div th:text="${arr1[0]}"></div>
+    <div th:text="${arr1[1]}"></div>
+    <div th:text="${arr1[4]}"></div>
+<!--    <div th:text="${arr1[10]}"></div> --> <!-- 에러발생. index 벗어나면 에러 -->
+    <!-- Caused by: org.springframework.expression.spel.SpelEvaluationException:
+     EL1024E: The array has '5' elements, index '10' is invalid-->
+
+    <div th:text="${arr2[0]}"></div>
+    <div th:text="${arr2[1]}"></div>
+    <div th:text="${arr2[0].name}"></div>
+    <div th:text="${arr2[1].regdate}"></div>
+
+    <br>
+    <h2>ArrayList의 경우는?</h2>
+    <div th:text="'list1[0] >>  ' + ${list1[0]}"></div>
+    <div th:text="'list1[1] >>  ' + ${list1[1]}"></div>
+    <div th:text="'list1[4] >>  ' + ${list1[4]}"></div>
+
+    <div th:text="'list2[3] >>  ' + ${list2[3]}"></div>
+    <div th:text="'list2[3].name >>  ' + ${list2[3].name}"></div>
+    <div th:text="'list2[3].regdate >>  ' + ${list2[3].regdate}"></div>
+
+    <br>
+    <h2>Map의 경우는?</h2>
+    <div th:text="${map1}"></div>
+    <div th:text="${map1[0]}"></div>
+    <div th:text="${map2}"></div>
+    <div th:text="${map2[0]}"></div>
+
+
+
+
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

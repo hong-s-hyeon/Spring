@@ -39,7 +39,8 @@ public class DIMain03 implements CommandLineRunner {
         // 아니, Student 객체 만들면서 score1을 호출하면서 new로 새로운 객체를 생성했는데,
         // 왜 두개가 같지?
         // @Bean으로 만들어진 Bean객체는 알아서 자동주입된다.
-        System.out.println(scoreA == stuA.getScore());
+        System.out.println("scoreA == stuA ?? >> " + (scoreA == stuA.getScore()));
+
 
         // 컨테이너에 생성된 bean 의 '이름' 으로
         // bean 객체를 받아올수 있다.
