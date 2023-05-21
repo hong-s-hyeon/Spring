@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Sample8</title>
+	<style>
+	    table, th, td {
+	        border : 1px solid black;
+	        border-collapse: collapse;
+	    }
+	    table {width: 100%;}
+	</style>
+</head>
+<body>
+	<h1>/sample8</h1>
+
+	<div>Context Path: <b th:utext="'#requests.getContextPath() 는 사용불가'"></b></div>
+
+	<ol>
+		<h3>Absolute URLs @{http:// ... }</h3>
+		<li><a href="http://localhost:8081/thymeleaf/sample1">sample1</a></li>
+		<li><a th:href="@{http://localhost:8081/thymeleaf/sample1}">sample1</a></li>
+	</ol>
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Sample6</title>
+	<style>
+	    table, th, td {
+	        border : 1px solid black;
+	        border-collapse: collapse;
+	    }
+	    table {width: 100%;}
+	</style>
+</head>
+<body>
+	<h1>/sample6</h1>
+
+	<table>
+		<tr>
+			<td>ID</td>
+			<td>NAME</td>
+			<td>REGDATE</td>
+		</tr>
+
+		<tr th:each="member : ${list}">
+			<td>[[${member.id}]]</td>
+			<td>[[${member.name}]]</td>
+			<td>[[${member.regdate}]]</td>
+		</tr>
+	</table>
+	<br>
+	<table th:inline="text"> <!--th:inline="text"  가 기본동작-->
+		<tr>
+			<td>ID</td>
+			<td>NAME</td>
+			<td>REGDATE</td>
+		</tr>
+
+		<tr th:each="member : ${list}">
+			<td>[[${member.id}]]</td>
+			<td>[[${member.name}]]</td>
+			<td>[[${member.regdate}]]</td>
+		</tr>
+	</table>
+
+	<h3 th:if="${list} and ${#lists.size(list) > 0}">[[${#lists.size(list)}]] 개</h3>
+
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

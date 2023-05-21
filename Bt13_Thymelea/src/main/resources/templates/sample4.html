@@ -47,25 +47,44 @@
 	<h3>th:if / th:unless 에 대해서...</h3>
 	<table th:with="target='u01'">
 		<tr>
+			<td>link</td>
 			<td>ID</td>
 			<td>NAME</td>
 			<td>REGDATE</td>
 		</tr>
 
-		<tr th:each="member : ${list}">
+		<tr th:each="member : ${list}"
+			th:if="${member.id}">  <!-- if 에 null 값이 오면 '거짓' 판정 -->
 			<td>
 				<a th:if="${member.id == target}" href="/modify">MODIFY</a>  <!-- if 조건식 값이 참일 때만 렌더링 됨. -->
 				<p th:unless="${member.id == target}">VIEW</p>  <!-- unless 조건식 값이 거짓일 때만 렌더링 됨. -->
 			</td>
+			<td th:text="${member.id}"></td>
 			<td th:text="${member.name}"></td>
 			<td th:text="${#temporals.format(member.regdate, 'yyyy-MM-dd HH:mm:ss')}"></td>
 		</tr>
 	</table>
+	<br>
+	<br>
+	<hr>
+	<br>
+	<br>
+
+	test1: <span th:if="${test1}" th:text="${test1}"></span><br>  <!--"aaa" 참판정 -->
+	test2: <span th:if="${test2}" th:text="${test2}"></span><br>  <!--"" 참판정 ???-->
+	test3: <span th:if="${test3}" th:text="${test3}"></span><br>  <!--null 거짓 판정 -->
+	test4: <span th:if="${test4}" th:text="${test4}"></span><br>  <!--false 거짓 판정 -->
+	test5: <span th:if="${test5}" th:text="${test5}"></span><br>  <!-- 0 거짓 판정 -->
 
 
+	<!-- null 혹은 empty 문자열 -->
+	<!--#strings.empty()  내장객체 -->
+	<span th:if="${not #strings.isEmpty(test1)}" th:text="${test1}"></span>
+	<span th:if="${!#strings.isEmpty(test1)}" th:text="${test1}"></span>
+	<span th:if="${not #strings.isEmpty(test2)}" th:text="${test2}"></span>
+	<span th:if="${!#strings.isEmpty(test2)}" th:text="${test2}"></span>
+	<span th:if="${test3}" th:text="${test3}"></span><br>
 
-
-
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><bs><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>

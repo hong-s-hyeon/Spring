@@ -3,6 +3,7 @@ package com.lec.spring;
 import com.lec.spring.domain.Member;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -92,7 +93,41 @@ public class SampleController {
     public void sample4(Model model) {
         list2.get(3).setId(null);
         model.addAttribute("list", list2);
+
+        // th:if 에서 어케 판정될까?
+        model.addAttribute("test1", "aaa");
+        model.addAttribute("test2", "");
+        model.addAttribute("test3", null);
+        model.addAttribute("test4", false);
+        model.addAttribute("test5", 0);
     }
 
+    @GetMapping("/sample5")  // GET 방식으로 /sample4 에 대해 동작하는 handler
+                            //  @RequestMapping(value = "/sample5", method = RequestMethod.GET) 와 동일
+    public void sample5(Model model) {
+        String result = "SUCCESS";
+        model.addAttribute("result", result);
 
+    }
+
+    @GetMapping("/sample6")
+    public void sample6(Model model) {
+        model.addAttribute("list", list2);
+        String result = "SUCCESS";
+        model.addAttribute("result", result);
+    }
+
+    @GetMapping("/sample7")
+    public void sample7(Model model) {
+        model.addAttribute("now1", LocalDateTime.now());    //java.time.LocalDateTime
+        model.addAttribute("now2", new Date());     // java.util.Date
+        model.addAttribute("price", 123456789);
+        model.addAttribute("title", "This is sample");
+        model.addAttribute("options", Arrays.asList("AAA", "BBB", "CCC", "DDD"));   // List<>
+    }
+
+    @GetMapping("/sample8")
+    public void sample8(Model model) {
+
+    }
 }
