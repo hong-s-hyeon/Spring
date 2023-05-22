@@ -128,6 +128,8 @@ public class SampleController {
 
     @GetMapping("/sample8")
     public void sample8(Model model) {
+        model.addAttribute("value1", "John");
+        model.addAttribute("url1", "sample1");
 
     }
 }
