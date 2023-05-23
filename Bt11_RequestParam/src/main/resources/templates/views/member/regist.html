@@ -2,12 +2,12 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
 <!-- action 의 url 과 method 주목 ! -->
-<form th:action="@{/member/regOk}" method="GET">
+<form th:action="@{/member/regOk}" method="GET"><!-- webRoot + context-relative path -->
 	<input type="text" name="name" value="GET"/>
 	<input type="submit" value="GET요청"/>
 </form>
 <hr>
-<form th:action="@{/member/regOk}" method="POST">
+<form action="regOk" method="POST"><!-- 위 아래 둘다 됨. @{} url expression 사용하는 것이 좋음 -->
 	<input type="text" name="name" value="POST"/>
 	<input type="submit" value="POST요청"/>
 </form>

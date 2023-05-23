@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+id : [[${id}]]<br>
+name : [[${name}]]<br>
+<br>
+<hr>
+<br>
+<!-- thymeleaf 에선 param 접두어를 붙이면 parameter 표시 가능
+     parameter 를 표시하기 위해 굳이 Model 에 담을 필요 없다 -->
+id : [[${param.id}]]<br>
+name : [[${param.name}]]<br>
+</html>

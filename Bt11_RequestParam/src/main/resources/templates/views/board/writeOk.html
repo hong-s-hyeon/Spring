@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+작성자 : [[${param.name}]]<br>
+글제목 : [[${param.subject}]]<br>
+내용 : [[${param.content}]]<br>
+
+<hr>
+write : [[${write}]]<br>
+작성자 : [[${param.name}]]<br>
+글제목 : [[${param.subject}]]<br>
+내용 : [[${param.content}]]<br>
+
+<hr>
+<!--/*
+write : [[${write}]]
+작성자 : [[${write.name}]]<br>
+글제목 : [[${write.subject}]]<br>
+내용 : [[${write.content}]]<br>
+*/-->
+DTO : [[${DTO}]]<br>
+작성자 : [[${DTO.name}]]<br>
+글제목 : [[${DTO.subject}]]<br>
+내용 : [[${DTO.content}]]<br>
+<button onclick="history.back()">이전으로</button>
+</html>
