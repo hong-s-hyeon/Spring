@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.lec.spring</groupId>
-	<artifactId>Bt13_Thymelea</artifactId>
+	<artifactId>Bt13_Thymeleaf</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Bt13_Thymeleaf</name>
 	<description>Thymeleaf</description>

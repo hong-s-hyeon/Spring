@@ -41,12 +41,10 @@ public class DIMain05 implements CommandLineRunner {
         this.stu1 = stu1;
         this.stu2 = stu2;
     }
-
     @Autowired      // field injection
     MessageBean msg1;
 
     MessageBean msg2;
-
     @Autowired // setter injection
     public void setMsg2(MessageBean msg2) {
         this.msg2 = msg2;

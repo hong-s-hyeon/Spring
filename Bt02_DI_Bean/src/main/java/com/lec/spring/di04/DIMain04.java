@@ -14,7 +14,7 @@ import org.springframework.context.ApplicationContext;
 /*
  * Bean  에 이름을 지정하는 방법
  * 1) 이름을 명시하지 않는 경우
- * @Component: 소문자로 시작하는 클래스이름이 자동으로 사용됨.  37, 38 라인에서 확인
+ * @Component: 소문자로 시작하는 클래스이름이 자동으로 사용됨.
  * @Bean: 소문자로 시작하는 메서드이름이 자동으로 사용됨.
  *
  * 2) 이름을 명시하는 경우
@@ -27,8 +27,8 @@ import org.springframework.context.ApplicationContext;
 public class DIMain04 implements CommandLineRunner {
 
     @Autowired
-    @Qualifier("score1")
-    Score scoreA; // 컨테이너 안에서 "score1" 이라는 name 의 Score 타입 bean 을 자동 주입
+    @Qualifier("score1")  // default 이름과 객체이름이 동일 하므로 생략 가능
+    Score score1; // 컨테이너 안에서 "score1" 이라는 name 의 Score 타입 bean 을 자동 주입
 
     @Autowired
     @Qualifier("Kim") // 컨테이너 안에서 "Kim" 이라는 name 의 Score 타입 bean 을 자동 주입
@@ -38,8 +38,9 @@ public class DIMain04 implements CommandLineRunner {
     MessageBean msg2;
 
     @Autowired
-    @Qualifier("messageKor")    // @Component로 bean객체를 만들면 ~ 앞글자 소문자인 클래스 이름으로 bean객체의 name이 만들어진다.
+    @Qualifier("messageKor")   // @Component로 bean객체를 만들면 ~ 앞글자 소문자인 클래스 이름으로 bean객체의 name이 만들어진다.
     public void setMsg1(MessageBean msg1) {
+        System.out.println("messageKor setter 실행");
         this.msg1 = msg1;
     }
 
@@ -66,7 +67,7 @@ public class DIMain04 implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println(scoreA);
+        System.out.println(score1);
         System.out.println(scoreB);
         System.out.println();
         System.out.println(ctx.getBean("score1"));
