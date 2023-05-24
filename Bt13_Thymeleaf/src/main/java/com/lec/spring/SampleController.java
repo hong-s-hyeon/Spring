@@ -81,6 +81,8 @@ public class SampleController {
         System.out.println(model.addAttribute("list2", list2));
         System.out.println(model.addAttribute("map1", map1));
         System.out.println(model.addAttribute("map2", map2));
+        System.out.println(model.addAttribute("map2.get(6)", map1.get(6)));
+        System.out.println("안녕");
 
     }
 

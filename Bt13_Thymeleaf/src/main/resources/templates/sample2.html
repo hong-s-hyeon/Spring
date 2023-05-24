@@ -57,6 +57,7 @@
 
     <!-- 변수 표현식 안에선 논리 연산자 사용 가능 -->
 	<div th:text="${true && false}"></div>
+	<div th:text="true && false"></div>   <!-- 이거 안되네... -->
 	<div th:text="${true || false}"></div>
 	<div th:text="${!false}"></div>
     <div th:text="${true and false}"></div>

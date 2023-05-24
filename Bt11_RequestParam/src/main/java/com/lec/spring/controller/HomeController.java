@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -154,7 +155,8 @@ public class HomeController {
 //            String content
 //    ) {}
 
-    // 커맨드 객체 사용
+    // 커맨드 객체 사용(request에서 넘어온 값들을 한번에 받을 수 있게 된다.)
+    // 이 값들을 받아오기 위해선, 커맨드 class에서 프로퍼티와 setXxx()메소드가 존재하여야 한다!
     // 코드 작업량이 매우 줄어든다.
 
     // 커맨드 객체는 객체타입명으로 Model attribute 추가 된다. (소문자로)
@@ -200,7 +202,7 @@ public class HomeController {
 
     @RequestMapping("/board/detail")
     @ResponseBody
-    public Write boardDetail(){
+    public Write boardDetail() {
         // Object 를 response 하면 JSON 으로 변환되어 response 된다!
         Write write = Write.builder()
                 .id(100)
@@ -209,8 +211,59 @@ public class HomeController {
                 .subject("hello")
                 .regDate(LocalDateTime.now())
                 .build();
-    return write;
+        return write;
     }
 
+    //-------------------------
+    // redirect
+    @RequestMapping("/member/ageInput")
+    public void ageInput() {
+        System.out.println("ageinput");
+    }
+
+    @RequestMapping("/member/ageCheck")
+    public String chkAge(
+            int age,
+            RedirectAttributes redirectAttr     // redirect 되는 request 에 담을 parameter 지정
+    ) {
+        System.out.println("checkage");
+
+        redirectAttr.addAttribute("age", age);  // "age"라는 parameter 보냄
+
+        if (age < 19) {
+            return "redirect:/member/underAge"; // view 가 아니라 redirect 된다.
+        } else {
+            return "redirect:/member/adult";
+        }
+    }
+
+    @RequestMapping("/member/underAge")
+    public String pageUnderAge(@ModelAttribute("age") int age) {
+        System.out.println("underAge");
+        return "member/ageUnder";
+    }
+
+    @RequestMapping("/member/adult")
+    public String pageAdult(int age) {
+        System.out.println("ageAdult");
+        return "member/ageAdult";
+    }
+
+
+
+    //----------------------------------------------------
+    // forward:
+    @RequestMapping("/member/detail")
+    public String memberDetail(){
+        System.out.println("/member/detail 요청");
+        return "forward:/member/notfound";
+    }
+
+    @RequestMapping("/member/notfound")
+    @ResponseBody       // 데이터(현재는 String) 자체를 리스폰스한다~!
+    public String memberNotFound(){
+        System.out.println("/member/notfound 요청");
+        return "/member/notfound";
+    }
 
 } // end controller

@@ -56,7 +56,7 @@
 		<tr th:each="member : ${list}"
 			th:if="${member.id}">  <!-- if 에 null 값이 오면 '거짓' 판정 -->
 			<td>
-				<a th:if="${member.id == target}" href="/modify">MODIFY</a>  <!-- if 조건식 값이 참일 때만 렌더링 됨. -->
+				<a th:if="${member.id == target}" href="modify">MODIFY</a>  <!-- if 조건식 값이 참일 때만 렌더링 됨. -->
 				<p th:unless="${member.id == target}">VIEW</p>  <!-- unless 조건식 값이 거짓일 때만 렌더링 됨. -->
 			</td>
 			<td th:text="${member.id}"></td>
