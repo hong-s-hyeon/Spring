@@ -27,7 +27,6 @@
   </component>
   <component name="DBNavigator.Project.FileConnectionMappingManager">
     <mapping file-url="file://$PROJECT_DIR$/Bt15_MyBatis/ERD/t5_web_mysql_test.sql" connection-id="6c6fa1cc-4014-4fca-a63d-2cf3b7308181" session-id="MAIN" current-schema="mydb2211" />
-    <mapping file-url="file://$PROJECT_DIR$/Bt15_MyBatis/ERD/t5_web_mysql.sql" connection-id="6c6fa1cc-4014-4fca-a63d-2cf3b7308181" session-id="MAIN" current-schema="mydb2211" />
     <mapping file-url="file://$PROJECT_DIR$/Bt15_MyBatis/ERD/t5_web_mysql_data.sql" connection-id="6c6fa1cc-4014-4fca-a63d-2cf3b7308181" session-id="MAIN" current-schema="mydb2211" />
   </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
@@ -51,13 +50,15 @@
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
           <database-version value="8.0" />
-          <driver-source value="BUILTIN" />
+          <driver-source value="BUNDLED" />
           <driver-library value="" />
           <driver value="" />
           <url-type value="DATABASE" />
           <host value="localhost" />
           <port value="3306" />
           <database value="mydb2211" />
+          <tns-folder value="" />
+          <tns-profile value="" />
           <type value="USER_PASSWORD" />
           <user value="myuser2211" />
           <deprecated-pwd value="MTIzNA==" />
@@ -254,12 +255,18 @@
           <content-type name="DTD" enabled="true" />
           <content-type name="HTML" enabled="true" />
           <content-type name="XHTML" enabled="true" />
+          <content-type name="CSS" enabled="true" />
           <content-type name="Java" enabled="true" />
           <content-type name="SQL" enabled="true" />
           <content-type name="PL/SQL" enabled="true" />
+          <content-type name="JavaScript" enabled="true" />
           <content-type name="JSON" enabled="true" />
           <content-type name="JSON5" enabled="true" />
+          <content-type name="JSP" enabled="true" />
+          <content-type name="JSPx" enabled="true" />
           <content-type name="Groovy" enabled="true" />
+          <content-type name="FTL" enabled="true" />
+          <content-type name="VTL" enabled="true" />
           <content-type name="AIDL" enabled="true" />
           <content-type name="YAML" enabled="true" />
           <content-type name="Manifest" enabled="true" />

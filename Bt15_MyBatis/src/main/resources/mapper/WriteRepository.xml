@@ -5,11 +5,32 @@
 
 <mapper namespace="com.lec.spring.repository.WriteRepository">
 
-    <insert id="save" flushCache="true" parameterType="com.lec.spring.domain.Write">
+    <insert id="save" flushCache="true" parameterType="com.lec.spring.domain.Write"
+                useGeneratedKeys="true" keyColumn="id" keyProperty="id">
         INSERT INTO t5_test_write
             (subject, content, user)
         VALUES
-            (#{subject}, #{content}, #{user})
+            (#{subject}, #{content}, #{user}) -- getter 값들이 들어옴
     </insert>
+
+    <update id="incViewCnt" flushCache="true">
+        UPDATE t5_test_write
+        SET viewcnt = viewcnt + 1
+        WHERE id = #{param1}
+    </update>
+
+    <select id="findById" flushCache="true" resultType="com.lec.spring.domain.Write">
+        SELECT
+            id,         -- setId()
+            subject,    -- setSubject()
+            content,    -- setContent()
+            viewcnt "viewCnt",    -- setViewcnt() >> setViewCnt만 있다... >> 별칭사용!
+            user,       -- setUser()
+            regdate "regDate"    -- setRegdate()>> setRegDate만 있다... >> 별칭사용!
+        FROM
+            t5_test_write
+        WHERE
+            id = #{id}
+    </select>
 
 </mapper>
