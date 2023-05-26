@@ -1,6 +1,7 @@
 package com.lec.spring.repository;
 
 import com.lec.spring.domain.Write;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -13,7 +14,6 @@ public interface WriteRepository {
     // 새글 작성 <- Write
     // 앞에  public abstract 항상 붙어있음
     int save(Write write);
-
 
     // 특정 id 글 내용 읽기
     Write findById(long id);

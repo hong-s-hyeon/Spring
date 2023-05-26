@@ -16,7 +16,6 @@ import java.util.List;
 @Service
 public class BoardService {
 
-
     private WriteRepository writeRepository;
     @Autowired
     public BoardService(SqlSession sqlSession){ // MyBatis 가 생성한 SqlSession 빈(bean) 객체 주입
@@ -27,7 +26,6 @@ public class BoardService {
     public int write(Write write) {
         return writeRepository.save(write);
     }
-
 
     // 특정 id의 글 조회
     // 트랜잭션 처리

@@ -6,6 +6,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDateTime;
@@ -78,5 +81,50 @@ public class CookieController {
         cookie.setMaxAge(0);
         response.addCookie(cookie);
         return "redirect:/cookie/list";
+    }
+
+    //------------------------------------------------------------------------
+    public static final String ADMIN_ID = "admin";
+    public static final String ADMIN_PW = "1234";
+
+
+
+    // Spring에서 쿠키를 다룰 때 많이쓰는 방법
+
+    @GetMapping("/login")
+                        //Response객체와 비교
+                        // 이말은 즉, 이미 한번 로그인 했었다는 것
+                        // userid 키값을 받아와서 userid에 담겟다
+    public void login(@CookieValue(name="userid", required = false) String userid, Model model) {
+        model.addAttribute("userid", userid);
+    }
+
+    @PostMapping("/login")
+    public String loginOk(String userid, String pw, HttpServletResponse response, Model model) {
+        // userid / pw 일치하면 로그인 성공 + 쿠키 생성
+        if(ADMIN_ID.equalsIgnoreCase(userid) && ADMIN_PW.equals(pw)){
+            Cookie cookie = new Cookie("userid", userid);
+            cookie.setMaxAge(30);
+            response.addCookie(cookie);
+
+            model.addAttribute("result", true);
+
+        }else{
+            Cookie cookie = new Cookie("userid", "안들어왔습니다~");
+            cookie.setMaxAge(0);        // 기존에 있었던 쿠키도 죽인다.
+            response.addCookie(cookie); // response 객체를 건드리면, 무조건 리턴타입은 String (void 안됨)
+
+        }
+
+        return "cookie/loginOk";
+    }
+
+    @PostMapping("logout")
+    public String logout(HttpServletResponse response) {
+        Cookie cookie = new Cookie("userid", "");
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
+
+        return "cookie/logout";
     }
 }
