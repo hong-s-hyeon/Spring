@@ -2,11 +2,11 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
 <script th:if="${list == null} or ${#lists.size(list) <= 0}">
-  alert("해당 정보가 삭제되거나 없습니다.");
+  alert("해당 정보가 삭제되거나 없습니다");
   history.back();
 </script>
 
-<th:block th:if="${list} and ${#lists.size(list) > 0}" th:with="dto=${list[0]}">
+<th:block th:with="dto=${list[0]}" th:if="${list} and ${#lists.size(list) > 0}">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,48 +17,43 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <script th:src="@{/js/detail.js}"></script>
+    <script th:src="@{/js/update.js}"></script>
 
-    <title>조회 - [[${dto.subject}]]</title>
+    <title>수정 - [[${dto.subject}]]</title>
   </head>
 
   <body>
   <div class="container mt-3">
-    <h2>조회 - [[${dto.subject}]]</h2>
+    <h2>수정</h2>
     <hr>
     <div class="mb-3 mt-3 clearfix">
       <span class="float-start me-2">id: [[${dto.id}]]</span>
       <span class="float-end ms-4">작성일: [[${#temporals.format(dto.regDate, 'yyyy-MM-dd HH:mm:ss')}]]</span>
-      <span class="float-end">조회수: [[${dto.viewCnt}]]</span>
+      <span class="float-end">조회수: [[${dto.viewCnt }]]</span>
     </div>
 
-    <section>
-      <form name="frmDelete" th:action="@{/board/delete}" method="post">
-        <input type="hidden" name="id" th:value="${dto.id}">
-      </form>
-
-
+    <form name="frm" th:action="@{/board/update}" method="post">
+      <input type="hidden" name="id" th:value="${dto.id}"/>
       <div class="mb-3">
         <label>작성자:</label>
-        <div class="border bg-light rounded p-2" >[[${dto.user}]]</div>
+        <span class="form-control" readonly>[[${dto.user}]]</span>
       </div>
       <div class="mb-3 mt-3">
-        <label>제목:</label>
-        <div class="border bg-light rounded p-2" >[[${dto.subject}]]</div>
+        <label for="subject">제목:</label>
+        <input type="text" class="form-control" id="subject" placeholder="제목을 입력하세요" name="subject" th:value="${dto.subject}" required>
       </div>
       <div class="mb-3 mt-3">
-        <label>내용:</label>
-        <div class="border bg-light rounded p-2" >[[${dto.content}]]</div>
+        <label for="content">내용:</label>
+        <textarea class="form-control" rows="5" id="content" placeholder="내용을 입력하세요" name="content">[[${dto.content}]]</textarea>
       </div>
 
       <!-- 하단 링크 -->
-      <a class="btn btn-outline-dark" th:href="@{/board/update(id=${dto.id})}">수정</a>
+      <button type="submit" class="btn btn-outline-dark">수정완료</button>
+      <button type="button" class="btn btn-outline-dark" onclick="history.back()">이전으로</button>
       <a class="btn btn-outline-dark" th:href="@{/board/list}">목록</a>
-      <button type="button" class="btn btn-outline-dark" id="btnDel">삭제</button>
-      <a class="btn btn-outline-dark" th:href="@{/board/write}">작성</a>
       <!-- 하단 링크 -->
 
-    </section>
+    </form>
   </div>
 
   </body>

@@ -46,4 +46,43 @@ public class BoardService {
 
         return list;
     }
+
+
+    public List<Write> list() {
+        return writeRepository.findAll();
+    }
+
+    // 특정 id 의 글 읽어오기
+    // 조회수 증가 없음
+    public List<Write> selectById(long id) {
+
+        Write write = writeRepository.findById(id);
+        List<Write> list = new ArrayList<>();
+
+        if (write != null) {
+            list.add(write);
+        }
+
+        return list;
+    }
+
+    public int update(Write write) {
+        return writeRepository.update(write);
+    }
+
+
+//    public int deleteById(Write write) {
+//        return writeRepository.delete(write);
+//    }
+
+    public int deleteById(long id) {
+        int result = 0;
+
+        Write write = writeRepository.findById(id);
+        if (write != null) {
+            result = writeRepository.delete(write);
+        }
+
+        return result;
+    }
 }

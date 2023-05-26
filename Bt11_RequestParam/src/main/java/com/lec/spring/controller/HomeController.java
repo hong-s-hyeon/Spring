@@ -228,6 +228,7 @@ public class HomeController {
     ) {
         System.out.println("checkage");
 
+        // get 방식의 redirect!!!! post는 ?? >> addFalshAttribute (Mybatis 편에서...)
         redirectAttr.addAttribute("age", age);  // "age"라는 parameter 보냄
 
         if (age < 19) {

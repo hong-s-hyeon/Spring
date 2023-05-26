@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/Bt11_RequestParam/pom.xml" />
         <option value="$PROJECT_DIR$/Bt13_Thymeleaf/pom.xml" />
         <option value="$PROJECT_DIR$/Bt15_MyBatis/pom.xml" />
+        <option value="$PROJECT_DIR$/Bt16_CookieSession/pom.xml" />
       </list>
     </option>
   </component>

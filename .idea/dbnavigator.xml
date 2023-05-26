@@ -12,8 +12,8 @@
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="6c6fa1cc-4014-4fca-a63d-2cf3b7308181">
-      <console name="web" type="STANDARD" schema="mydb2211" session="Main" />
+    <connection id="c60a955b-6634-432b-b350-ce039aa2a850">
+      <console name="lecture" type="STANDARD" schema="mydb2211" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -26,8 +26,10 @@
     <retain-sticky-names value="false" />
   </component>
   <component name="DBNavigator.Project.FileConnectionMappingManager">
-    <mapping file-url="file://$PROJECT_DIR$/Bt15_MyBatis/ERD/t5_web_mysql_test.sql" connection-id="6c6fa1cc-4014-4fca-a63d-2cf3b7308181" session-id="MAIN" current-schema="mydb2211" />
-    <mapping file-url="file://$PROJECT_DIR$/Bt15_MyBatis/ERD/t5_web_mysql_data.sql" connection-id="6c6fa1cc-4014-4fca-a63d-2cf3b7308181" session-id="MAIN" current-schema="mydb2211" />
+    <mapping file-url="file://$PROJECT_DIR$/Bt15_MyBatis/ERD/t5_web_mysql_test.sql" connection-id="c60a955b-6634-432b-b350-ce039aa2a850" session-id="MAIN" current-schema="mydb2211" />
+    <mapping file-url="file://$PROJECT_DIR$/Bt15_MyBatis/ERD/mysql.sql" connection-id="c60a955b-6634-432b-b350-ce039aa2a850" session-id="MAIN" current-schema="mydb2211" />
+    <mapping file-url="file://$PROJECT_DIR$/Bt15_MyBatis/ERD/t5_web_mysql.sql" connection-id="c60a955b-6634-432b-b350-ce039aa2a850" session-id="MAIN" current-schema="mydb2211" />
+    <mapping file-url="file://$PROJECT_DIR$/Bt15_MyBatis/ERD/t5_web_mysql_data.sql" connection-id="c60a955b-6634-432b-b350-ce039aa2a850" session-id="MAIN" current-schema="mydb2211" />
   </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
     <method-browser />
@@ -43,10 +45,10 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="6c6fa1cc-4014-4fca-a63d-2cf3b7308181" active="true" signed="true">
+      <connection id="c60a955b-6634-432b-b350-ce039aa2a850" active="true" signed="true">
         <database>
-          <name value="web" />
-          <description value="" />
+          <name value="lecture" />
+          <description value="lecture" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
           <database-version value="8.0" />
@@ -91,7 +93,7 @@
           <restore-workspace value="true" />
           <restore-workspace-deep value="false" />
           <environment-type value="default" />
-          <connectivity-timeout value="10" />
+          <connectivity-timeout value="30" />
           <idle-time-to-disconnect value="30" />
           <idle-time-to-disconnect-pool value="5" />
           <credential-expiry-time value="10" />

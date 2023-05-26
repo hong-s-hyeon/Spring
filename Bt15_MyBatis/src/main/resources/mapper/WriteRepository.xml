@@ -19,7 +19,8 @@
         WHERE id = #{param1}
     </update>
 
-    <select id="findById" flushCache="true" resultType="com.lec.spring.domain.Write">
+    <!-- 반복해서 사용될 쿼리문은 sql 태그로 정의 include 태그로 가져다 쓸수 있다 -->
+    <sql id="SELECT_BASE">
         SELECT
             id,         -- setId()
             subject,    -- setSubject()
@@ -29,8 +30,30 @@
             regdate "regDate"    -- setRegdate()>> setRegDate만 있다... >> 별칭사용!
         FROM
             t5_test_write
+    </sql>
+    
+    <select id="findById" flushCache="true" resultType="com.lec.spring.domain.Write">
+        <include refid="SELECT_BASE"/>
         WHERE
             id = #{id}
     </select>
+
+    
+    <select id="findAll" flushCache="true" resultType="com.lec.spring.domain.Write">
+        <include refid="SELECT_BASE"/>
+        ORDER BY
+            id desc
+    </select>
+
+    <update id="update" flushCache="true" parameterType="com.lec.spring.domain.Write">
+        UPDATE t5_test_write
+        SET subject = #{subject}, content = #{content}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" flushCache="true" parameterType="com.lec.spring.domain.Write">
+        DELETE FROM t5_test_write
+        WHERE id = #{id} -- getId() 값이 들어옴
+    </delete>
 
 </mapper>
