@@ -32,6 +32,7 @@
             t5_test_write
     </sql>
     
+
     <select id="findById" flushCache="true" resultType="com.lec.spring.domain.Write">
         <include refid="SELECT_BASE"/>
         WHERE
